@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom</title>
+    <script>
+      function calculate(expression) {
+        try {
+          return eval(expression);
+        } catch (error) {
+          return error;
+        }
+      }
+
+      function updateExpression(expression) {
+        document.getElementById("expression").value = expression;
+      }
+
+      function handleClick(value) {
+        let currentExpression = document.getElementById("expression").value;
+        let newExpression = currentExpression + value;
+        updateExpression(newExpression);
+      }
+
+      function clearExpression() {
+        updateExpression("");
+      }
+
+      function evaluateExpression() {
+        let currentExpression = document.getElementById("expression").value;
+        let result = calculate(currentExpression);
+        updateExpression(result);
+      }
+    </script>
+  </head>
+  <body>
+    <input id="expression" type="text" readonly></input>
+    <br><br>
+    <button onclick="handleClick('1')">1</button>
+    <button onclick="handleClick('2')">2</button>
+    <button onclick="handleClick('3')">3</button>
+    <button onclick="handleClick('+')">+</button>
+    <br><br>
+    <button onclick="handleClick('4')">4</button>
+    <button onclick="handleClick('5')">5</button>
+    <button onclick="handleClick('6')">6</button>
+    <button onclick="handleClick('-')">-</button>
+    <br><br>
+    <button onclick="handleClick('7')">7</button>
+    <button onclick="handleClick('8')">8</button>
+    <button onclick="handleClick('9')">9</button>
+    <button onclick="handleClick('')"></button>
+    <br><br>
+    <button onclick="handleClick('.')">.</button>
+    <button onclick="handleClick('0')">0</button>
+    <button onclick="evaluateExpression()">=</button>
+    <button onclick="handleClick('/')">/</button>
+    <br><br>
+    <button onclick="clearExpression()">C</button>
+  </body>
+</html>
